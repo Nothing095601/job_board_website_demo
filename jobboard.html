@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentFindr | Modern Job Board</title>
+    <link rel="stylesheet" href="jobboard_style.css">
+    <link rel="stylesheet" href="jobboard_utility.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container flex bg-black">
+        <div class="left">
+            <div class="close">
+                <i class="fas fa-times " aria-hidden="true"></i>
+            </div>
+            <div class="home bg-grey rounded m-1 p-1">
+                <div class="logo">
+                    <h1 class="invert">TalentFindr</h1>
+                </div>
+                <ul>
+                    <li onclick="filterJobs('')"><i class="fas fa-home" aria-hidden="true"></i>Home</li>
+                    <li onclick="filterJobs('')"><i class="fas fa-search" aria-hidden="true"></i>Browse All</li>
+                    <li><i class="fas fa-bookmark" aria-hidden="true"></i>Saved Jobs</li>
+                </ul>
+            </div>
+            <div class="library bg-grey rounded m-1 p-1">
+                <div class="heading">
+                    <i class="fas fa-user-tie" aria-hidden="true"></i>
+                    <h2>Employer Portal</h2>
+                </div>
+                <div class="portal-links">
+                    <ul>
+                        <li id="postJobBtn">Post a Job</li>
+                        <li>Manage Listings</li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <div><a href="#"><span>About Us</span></a></div>
+                    <div><a href="#"><span>Support</span></a></div>
+                    <div><a href="#"><span>Contact</span></a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right bg-grey rounded">
+            <div class="header">
+                <div class="nav">
+                    <div class="hamburgerCont">
+                        <i class="fas fa-bars  hamburger"></i>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="signupbtn">Employer Sign up</button>
+                    <button class="loginbtn">Candidate Login</button>
+                </div>
+            </div>
+
+            <div class="search-section p-20">
+                <h1>Find Your Next Opportunity</h1>
+                <div class="search-bar flex">
+                    <input type="text" id="job-title-search" placeholder="Job Title, Keyword, or Company...">
+                    <input type="text" id="job-location-search" placeholder="Location (e.g., Remote, Mumbai)...">
+                    <button onclick="searchJobs()"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+
+            <div class="job-listings">
+                <h2>All Job Openings</h2>
+                <div class="cardcontainer" id="jobs-container">
+                    <p id="no-jobs-message" style="display:none; color: var(--text-light);">No jobs found matching your
+                        criteria.</p>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="footer2">
+                    <div class="grid">
+                        <ul>
+                            <span>Candidates</span>
+                            <li>Find Jobs</li>
+                            <li>Career Advice</li>
+                            <li>Salaries</li>
+                        </ul>
+                        <ul>
+                            <span>Employers</span>
+                            <li>Post a Job</li>
+                            <li>Pricing</li>
+                            <li>Employer Login</li>
+                        </ul>
+                        <ul>
+                            <span>Company</span>
+                            <li>About TalentFindr</li>
+                            <li>Careers</li>
+                            <li>Press</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="jobDetailsModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Job Title</h2>
+            <p id="modal-company" class="company-name"></p>
+            <p id="modal-meta" class="job-meta"></p>
+            <div class="details-section">
+                <h3>Description</h3>
+                <p id="modal-description"></p>
+            </div>
+            <div class="details-section">
+                <h3>Contact</h3>
+                <p id="modal-contact"></p>
+            </div>
+            <button id="modal-apply-btn" class="apply-btn">Apply Now</button>
+        </div>
+    </div>
+
+
+    <script src="jobboard.js"></script>
+
+
+    <!-- === Employer Signup Modal === -->
+    <div id="employerSignupModal" class="signup-modal hidden">
+        <div class="signup-content">
+            <span class="close-signup" onclick="closeSignup('employerSignupModal')">&times;</span>
+            <h2>Employer Sign Up</h2>
+            <label>Company Name</label>
+            <input type="text" placeholder="Enter your company name">
+            <label>Email</label>
+            <input type="email" placeholder="Enter company email">
+            <label>Password</label>
+            <input type="password" placeholder="Create a password">
+            <button>Sign Up</button>
+        </div>
+    </div>
+
+    <!-- === Candidate Signup Modal === -->
+    <div id="candidateSignupModal" class="signup-modal hidden">
+        <div class="signup-content">
+            <span class="close-signup" onclick="closeSignup('candidateSignupModal')">&times;</span>
+            <h2>Candidate Sign Up</h2>
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email">
+            <label>Password</label>
+            <input type="password" placeholder="Create a password">
+            <button>Sign Up</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
